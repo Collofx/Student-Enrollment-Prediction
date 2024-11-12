@@ -1,0 +1,10 @@
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Plot the feature importance
+plt.figure(figsize=(10, 6))
+sns.barplot(x=feature_importance, y=features)
+plt.title('Feature Importance')
+plt.xlabel('Importance')
+plt.ylabel('Features')
+plt.show()
