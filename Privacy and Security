@@ -1,0 +1,2 @@
+# Drop PII columns
+X = X.drop(['student_id', 'name'], axis=1)  # Example of columns to drop
