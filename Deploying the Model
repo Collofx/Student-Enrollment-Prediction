@@ -1,0 +1,18 @@
+import joblib
+
+# Save the trained model
+joblib.dump(model, 'student_enrollment_model.pkl')
+
+# Save the scaler
+joblib.dump(scaler, 'scaler.pkl')
+
+# Loading the model for future use
+loaded_model = joblib.load('student_enrollment_model.pkl')
+loaded_scaler = joblib.load('scaler.pkl')
+
+# Example prediction with new student data
+new_data = np.array([new_student_data])  # Example new student data
+new_data_scaled = loaded_scaler.transform(new_data)
+prediction = loaded_model.predict(new_data_scaled)
+
+print("Predicted Enrollment Status:", "Enrolled" if prediction[0] == 1 else "Not Enrolled")
