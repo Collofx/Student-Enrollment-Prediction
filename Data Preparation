@@ -1,0 +1,27 @@
+import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, classification_report
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load your data (assuming CSV file format)
+data = pd.read_csv("student_data.csv")
+
+# Check the first few rows to understand the data
+print(data.head())
+
+# Data Cleaning: Handle missing values
+data.fillna(data.mean(), inplace=True)  # Replace missing values with mean for simplicity
+
+# Encode categorical variables (if necessary)
+data = pd.get_dummies(data, drop_first=True)
+
+# Features and Target Variables
+X = data.drop('enrollment_status', axis=1)  # assuming 'enrollment_status' is the target variable
+y = data['enrollment_status']  # binary target variable (1 = enrolled, 0 = not enrolled)
+
+# Split the data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
