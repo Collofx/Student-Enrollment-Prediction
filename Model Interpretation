@@ -1,0 +1,11 @@
+# Feature importance (which features the model found important)
+feature_importance = model.feature_importances_
+
+# Visualizing feature importance
+features = X.columns
+plt.figure(figsize=(10, 6))
+sns.barplot(x=feature_importance, y=features)
+plt.title('Feature Importance')
+plt.xlabel('Importance')
+plt.ylabel('Features')
+plt.show()
